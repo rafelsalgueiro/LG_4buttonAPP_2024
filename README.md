@@ -20,11 +20,3 @@ To connect the app to your Liquid Galaxy, follow these steps:
 2. Enter the IP address and port of your Liquid Galaxy.
 3. Input any additional parameters required for connection.
 4. Tap the "Connect" button to establish a connection with your Liquid Galaxy.
-
-## Support
-For any inquiries or assistance, please contact our support team at support@liquidgalaxy.com.
-
-## Feedback
-We value your feedback! If you have any suggestions or encounter any issues while using the app, please reach out to us or leave a review on the app store.
-
-Thank you for choosing the Liquid Galaxy Controller App!
