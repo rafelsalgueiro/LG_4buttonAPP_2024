@@ -36,7 +36,7 @@ class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 ElevatedButton(
-                  onPressed: () {
+                  onPressed: () async {
                     showDialog(
                       context: context,
                       builder: (BuildContext context) {
@@ -61,7 +61,7 @@ class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin
                       },
                     ).then((confirmed) async {
                       if (confirmed == true) {
-                         await LGService.shared?.reboot();
+                        await LGService.shared?.reboot();
                       }
                     });
                   },
@@ -70,12 +70,7 @@ class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin
 
                 ElevatedButton(
                   onPressed: () async {
-                    if (await LGService.shared?.connected() == true){
-                      await LGService.shared?.sendTourToLleida();
-                    } else {
-                      print("Not connected");
-                    }
-
+                       await LGService.shared?.sendTourToLleida();
                   },
                   child: const Text('Move LG to Lleida'),
                 ),
@@ -87,13 +82,13 @@ class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin
               children: [
                 ElevatedButton(
                   onPressed: () async {
-                    await LGService.shared?.sendOrbit();
+                     await LGService.shared?.sendOrbit();
                   },
                   child: const Text('Orbit around your home city'),
                 ),
                 ElevatedButton(
                   onPressed: () async {
-                   await LGService.shared?.sendKMLToSlave();
+                    await LGService.shared?.sendKMLToSlave();
                   },
                   child: const Text('HTML bubble'),
                 ),
@@ -102,14 +97,22 @@ class _LandingPageState extends State<LandingPage> with TickerProviderStateMixin
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => ConnectionPage(onConnectionChanged: _handleConnectionChanged),
-          ));
+            MaterialPageRoute(builder: (context) => ConnectionPage(onConnectionChanged: _handleConnectionChanged)),
+          );
         },
-        child: const Icon(Icons.arrow_forward),
+        label: const Text(
+          'Connection page',
+          style: TextStyle(color: Colors.black),
+        ),
+        icon: const Icon(
+          Icons.arrow_forward,
+          color: Colors.black,
+        ),
+        backgroundColor: Colors.white,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
     );
